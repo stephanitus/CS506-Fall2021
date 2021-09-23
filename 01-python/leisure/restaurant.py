@@ -1,3 +1,14 @@
 def draw_restaurant():
-    print("restaurant not found")
+    print(
+    '''
+    ===============================
+    |                             |
+    |           Chipotle          |
+    |                             |
+    |             ====            |
+    |             |  |            |
+    |             |  |            |
+    ===============================
+    '''
+    )
     return

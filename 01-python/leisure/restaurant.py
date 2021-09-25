@@ -9,26 +9,23 @@ def draw_restaurant(height):
 |             |  |            |
 |             |  |            |
 ===============================
-'''
-        )
+''')
     else:
         #print roof
         print(
 '''
-===============================
-|           Chipotle          |'''
+   ===============================
+   |           Chipotle          |'''
         )
         #print variable wall height
         for x in range(height-minimumHeight):
-            print(
-'''|                             |'''
-            )
+            print("   |                             |")
         #print floor + entrance
         print(
-'''|             ====            |
-|             |  |            |
-|             |  |            |
-===============================
+'''   |             ====            |
+   |             |  |            |
+   |             |  |            |
+   ===============================
 '''
         )
     return

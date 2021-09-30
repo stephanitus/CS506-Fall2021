@@ -1,5 +1,6 @@
 from collections import defaultdict
 from math import inf
+from .sim import euclidean_dist
 import random
 import csv
 
@@ -11,7 +12,10 @@ def point_avg(points):
     
     Returns a new point which is the center of all the points.
     """
-    raise NotImplementedError()
+    average = []
+    for d in zip(*points):
+        average.add(sum(d)/len(d))
+    return average
 
 
 def update_centers(dataset, assignments):
@@ -21,7 +25,18 @@ def update_centers(dataset, assignments):
     Compute the center for each of the assigned groups.
     Return `k` centers in a list
     """
-    raise NotImplementedError()
+    clusterCenters = []
+    numClusters = max(assignments) + 1
+    for c in range(numClusters):
+        #generate cluster
+        cluster = []
+        for index in range(len(dataset)):
+            if assignments[index] == c:
+                cluster.add(dataset[index])
+        #compute center for cluster
+        clusterCenters.add(point_avg(cluster))
+
+    return clusterCenters
 
 def assign_points(data_points, centers):
     """
@@ -43,20 +58,27 @@ def distance(a, b):
     """
     Returns the Euclidean distance between a and b
     """
-    raise NotImplementedError()
+    return euclidean_dist(a, b)
 
 def distance_squared(a, b):
-    raise NotImplementedError()
+    return (distance(a,b)**2)
 
 def generate_k(dataset, k):
     """
     Given `data_set`, which is an array of arrays,
     return a random set of k points from the data_set
     """
-    raise NotImplementedError()
+    randomPoints = []
+    for i in range(k):
+        randomPoints.add(dataset.pop(random.randInt(0,len(dataset))))
 
 def cost_function(clustering):
-    raise NotImplementedError()
+    result = 0
+    for x in clustering:
+        for xi in x:
+            measure = distance_squared(x,xi)
+            result += measure
+    return result
 
 
 def generate_k_pp(dataset, k):

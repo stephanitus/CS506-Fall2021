@@ -73,12 +73,7 @@ def generate_k(dataset, k):
         randomPoints.add(dataset.pop(random.randInt(0,len(dataset))))
 
 def cost_function(clustering):
-    result = 0
-    for x in clustering:
-        for xi in x:
-            measure = distance_squared(x,xi)
-            result += measure
-    return result
+    raise NotImplementedError()
 
 
 def generate_k_pp(dataset, k):
